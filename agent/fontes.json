@@ -1,0 +1,19 @@
+{
+  "fontes": [
+    {"camada": 1, "nome": "TCE-MA", "url": "https://www.tcema.tc.br", "foco": "Acórdãos, deliberações, notícias, MAIA/IA"},
+    {"camada": 1, "nome": "AGE/MA — STC", "url": "https://www.stc.ma.gov.br", "foco": "Portarias, relatórios, publicações institucionais"},
+    {"camada": 2, "nome": "CGU", "url": "https://www.gov.br/cgu", "foco": "Normas, MOT, PAINT, e-CGU"},
+    {"camada": 2, "nome": "CONACI", "url": "https://www.conaci.org.br", "foco": "Resoluções, entendimentos KPAs, legislação"},
+    {"camada": 2, "nome": "IIA Brasil", "url": "https://www.iiabrasil.org.br", "foco": "Artigos, normas, boas práticas IPPF"},
+    {"camada": 3, "nome": "TCU", "url": "https://portal.tcu.gov.br", "foco": "Acórdãos, jurisprudência, ISSAI"},
+    {"camada": 3, "nome": "ATRICON", "url": "https://www.atricon.org.br", "foco": "Notícias, PNTP, MMD-TC"},
+    {"camada": 3, "nome": "IRB", "url": "https://www.irbcontas.org.br", "foco": "Revista técnica, capacitação"},
+    {"camada": 4, "nome": "IIA Global", "url": "https://www.theiia.org", "foco": "Global Standards, IA-CM"},
+    {"camada": 4, "nome": "INTOSAI", "url": "https://www.issai.org", "foco": "ISSAI 100/200/300/400"},
+    {"camada": 4, "nome": "OLACEFS", "url": "https://www.olacefs.com", "foco": "Boas práticas América Latina"},
+    {"camada": 4, "nome": "ENAP", "url": "https://www.enap.gov.br", "foco": "Cursos EAD, eventos, seminários"},
+    {"camada": 5, "nome": "Banco Mundial", "url": "https://www.worldbank.org", "foco": "Governança pública, IA-CM"},
+    {"camada": 5, "nome": "FENAUD", "url": "https://www.fenaud.org.br", "foco": "Legislação da carreira"},
+    {"camada": 5, "nome": "Senado/Câmara", "url": "https://legis.senado.leg.br", "foco": "Novas leis federais"}
+  ]
+}
