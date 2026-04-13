@@ -3,17 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AGE Informa — Todas as edições</title>
+<title>AGE Informa — Portal de Edições</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
+  /* ── Base ── */
   :root {
-    --azul: #002D72; --vermelho: #C0111E;
-    --dourado: #C8A84B; --texto: #2C2C2A;
-    --cinza-bg: #F5F4F0;
+    --azul:     #002D72;
+    --azul-med: #1A4A8A;
+    --vermelho: #C0111E;
+    --verde:    #1A6B3C;
+    --dourado:  #C8A84B;
+    --texto:    #2C2C2A;
+    --texto-sec:#5A5A58;
+    --borda:    #D8D5CC;
+    --bg:       #ECEAE4;
+    --bg-card:  #F5F4F0;
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Source Sans 3', sans-serif; background: #ECEAE4; color: var(--texto); }
-  .header { background: var(--azul); padding: 0; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Source Sans 3', sans-serif; background: var(--bg); color: var(--texto); }
+  a { text-decoration: none; color: inherit; }
+
+  /* ── Header ── */
+  .header { background: var(--azul); }
   .header-stripe { height: 6px; background: linear-gradient(to right, #1A1A1A 33.3%, #fff 33.3% 66.6%, var(--vermelho) 66.6%); }
   .header-inner { padding: 24px 40px; display: flex; align-items: center; gap: 18px; }
   .header-inner img { width: 52px; height: auto; filter: drop-shadow(0 1px 3px rgba(0,0,0,0.4)); }
@@ -21,23 +32,76 @@
   .brand-title span { color: var(--dourado); }
   .brand-sub { font-size: 11px; color: rgba(255,255,255,0.6); letter-spacing: 2px; text-transform: uppercase; margin-top: 3px; }
   .header-bottom { height: 3px; background: var(--dourado); opacity: 0.5; }
+
+  /* ── Seção apresentação ── */
+  .apresentacao { background: linear-gradient(135deg, var(--azul) 0%, var(--azul-med) 100%); padding: 48px 40px; }
+  .apresentacao-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .apres-texto h2 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 16px; line-height: 1.3; }
+  .apres-texto h2 span { color: var(--dourado); }
+  .apres-texto p { font-size: 14px; color: rgba(255,255,255,0.82); line-height: 1.8; }
+  .apres-indicadores { display: flex; flex-direction: column; gap: 16px; }
+  .indicador { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-left: 3px solid var(--dourado); border-radius: 6px; padding: 16px 20px; }
+  .indicador-numero { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 900; color: var(--dourado); line-height: 1; }
+  .indicador-label { font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 4px; }
+  @media (max-width: 640px) { .apresentacao-inner { grid-template-columns: 1fr; } }
+
+  /* ── Seção como usar ── */
+  .como-usar { background: var(--bg-card); border-bottom: 1px solid var(--borda); padding: 40px; }
+  .como-usar-inner { max-width: 900px; margin: 0 auto; }
+  .como-usar h3 { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--azul); margin-bottom: 20px; }
+  .uso-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .uso-card { background: #fff; border-radius: 8px; padding: 20px; border-top: 3px solid var(--azul); box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
+  .uso-card.verde { border-top-color: var(--verde); }
+  .uso-card.vermelho { border-top-color: var(--vermelho); }
+  .uso-card-icon { width: 36px; height: 36px; border-radius: 8px; background: var(--azul); display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+  .uso-card.verde .uso-card-icon { background: var(--verde); }
+  .uso-card.vermelho .uso-card-icon { background: var(--vermelho); }
+  .uso-card-icon svg { width: 18px; height: 18px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .uso-card h4 { font-size: 14px; font-weight: 700; color: var(--texto); margin-bottom: 6px; }
+  .uso-card p { font-size: 13px; color: var(--texto-sec); line-height: 1.6; }
+  @media (max-width: 640px) { .uso-cards { grid-template-columns: 1fr; } }
+
+  /* ── Conteúdo principal ── */
   .content { max-width: 900px; margin: 40px auto; padding: 0 24px; }
-  .section-title { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--azul); margin-bottom: 24px; padding-bottom: 10px; border-bottom: 2px solid var(--dourado); }
+  .section-header { margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid var(--dourado); }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--azul); }
+  .section-sub { font-size: 13px; color: var(--texto-sec); margin-top: 4px; }
+
+  /* ── Grid de edições ── */
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
   .edicao-card { background: #fff; border-radius: 8px; padding: 24px; text-decoration: none; color: var(--texto); border-top: 4px solid var(--azul); box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: transform 0.15s, box-shadow 0.15s; display: block; }
   .edicao-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
-  .edicao-numero { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--dourado); margin-bottom: 8px; }
-  .edicao-nome { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--azul); margin-bottom: 12px; }
+  .edicao-numero { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--dourado); margin-bottom: 6px; }
+  .edicao-nome { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--azul); margin-bottom: 6px; }
+  .edicao-data { font-size: 12px; color: var(--texto-sec); margin-bottom: 12px; }
   .edicao-link { font-size: 13px; color: var(--vermelho); font-weight: 600; }
-  .empty { text-align: center; color: #888; padding: 60px 0; font-size: 15px; }
-  .footer { text-align: center; padding: 40px; font-size: 12px; color: #999; margin-top: 60px; }
+
+  /* ── Estado vazio ── */
+  .empty-state { text-align: center; padding: 60px 24px; background: #fff; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
+  .empty-state svg { width: 44px; height: 44px; stroke: #ccc; fill: none; stroke-width: 1.5; margin-bottom: 12px; }
+  .empty-state p { font-size: 14px; color: #aaa; }
+
+  /* ── Rodapé ── */
+  .footer { background: var(--azul); margin-top: 60px; }
+  .footer-inner { max-width: 900px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+  .footer-brand { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 900; color: #fff; margin-bottom: 6px; }
+  .footer-brand span { color: var(--dourado); }
+  .footer-desc { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+  .footer-links h5 { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--dourado); margin-bottom: 12px; }
+  .footer-links a { display: block; font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 6px; transition: color 0.15s; }
+  .footer-links a:hover { color: #fff; }
+  .footer-base { border-top: 1px solid rgba(255,255,255,0.1); text-align: center; padding: 16px 24px; font-size: 11px; color: rgba(255,255,255,0.35); }
+  .footer-stripe { height: 4px; background: linear-gradient(to right, var(--dourado), var(--vermelho)); opacity: 0.5; }
+  @media (max-width: 640px) { .footer-inner { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
+
+<!-- CABEÇALHO -->
 <header class="header">
   <div class="header-stripe"></div>
   <div class="header-inner">
-    <img src="assets/brasao-ma.svg" alt="Brasão MA">
+    <img src="assets/brasao-ma.svg" alt="Brasão do Maranhão">
     <div>
       <div class="brand-title">AGE <span>Informa</span></div>
       <div class="brand-sub">Auditoria Geral do Estado do Maranhão</div>
@@ -45,15 +109,99 @@
   </div>
   <div class="header-bottom"></div>
 </header>
+
+<!-- APRESENTAÇÃO -->
+<section class="apresentacao">
+  <div class="apresentacao-inner">
+    <div class="apres-texto">
+      <h2>O informativo semanal da <span>auditoria interna</span> do Maranhão</h2>
+      <p>O AGE Informa é produzido pela Gerência de Monitoramento e Qualidade (GAUD-IV/GMQ) e reúne, toda semana, as publicações mais relevantes para a equipe de auditoria interna do Estado do Maranhão — normas, jurisprudência, boas práticas e oportunidades de capacitação.</p>
+    </div>
+    <div class="apres-indicadores">
+      <div class="indicador">
+        <div class="indicador-numero">15</div>
+        <div class="indicador-label">Fontes monitoradas semanalmente</div>
+      </div>
+      <div class="indicador">
+        <div class="indicador-numero">5</div>
+        <div class="indicador-label">Seções temáticas por edição</div>
+      </div>
+      <div class="indicador">
+        <div class="indicador-numero">Semanal</div>
+        <div class="indicador-label">Publicado toda segunda-feira</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO USAR -->
+<section class="como-usar">
+  <div class="como-usar-inner">
+    <h3>Como acessar o AGE Informa</h3>
+    <div class="uso-cards">
+      <div class="uso-card">
+        <div class="uso-card-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h4>Portal web</h4>
+        <p>Acesse este portal para ler e compartilhar qualquer edição. Todas as versões ficam arquivadas aqui.</p>
+      </div>
+      <div class="uso-card verde">
+        <div class="uso-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h4>Grupo WhatsApp</h4>
+        <p>Toda segunda-feira, a versão resumida é enviada ao grupo da equipe AGE/MA com link para a edição completa.</p>
+      </div>
+      <div class="uso-card vermelho">
+        <div class="uso-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h4>Site AGE/MA</h4>
+        <p>As edições também são divulgadas no site institucional da Auditoria-Geral do Estado do Maranhão.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRID DE EDIÇÕES -->
 <div class="content">
-  <h2 class="section-title">Todas as edições</h2>
+  <div class="section-header">
+    <div class="section-title">Todas as edições</div>
+    <div class="section-sub">Informativo semanal da GAUD-IV / GMQ · Auditoria-Geral do Estado do Maranhão</div>
+  </div>
+
   <div class="grid">
         <a href="edicoes/age-informa-01-2026.html" class="edicao-card">
           <div class="edicao-numero">Nº 01/2026</div>
           <div class="edicao-nome">AGE Informa</div>
+          <div class="edicao-data">Publicado em 13/04/2026</div>
           <div class="edicao-link">Acessar edição →</div>
         </a></div>
 </div>
-<footer class="footer">AGE Informa · GAUD-IV / GMQ · Auditoria Geral do Estado do Maranhão</footer>
+
+<!-- RODAPÉ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">AGE <span>Informa</span></div>
+      <div class="footer-desc">
+        Informativo semanal da Auditoria-Geral do Estado do Maranhão.<br>
+        Produzido pela GAUD-IV / Gerência de Monitoramento e Qualidade.<br>
+        Auditora-Geral: Luana de Jesus Pereira · STC/MA
+      </div>
+    </div>
+    <div class="footer-links">
+      <h5>Links institucionais</h5>
+      <a href="https://www.stc.ma.gov.br" target="_blank">STC/MA — Secretaria de Transparência e Controle</a>
+      <a href="https://www.tcema.tc.br" target="_blank">TCE-MA — Tribunal de Contas do Estado</a>
+      <a href="https://www.gov.br/cgu" target="_blank">CGU — Controladoria-Geral da União</a>
+      <a href="https://www.conaci.org.br" target="_blank">CONACI</a>
+    </div>
+  </div>
+  <div class="footer-base">AGE Informa · GAUD-IV / GMQ · Auditoria-Geral do Estado do Maranhão</div>
+  <div class="footer-stripe"></div>
+</footer>
+
 </body>
 </html>
