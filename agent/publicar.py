@@ -126,7 +126,7 @@ def atualizar_portal(edicoes: list):
 <header class="header">
   <div class="header-stripe"></div>
   <div class="header-inner">
-    <img src="assets/brasao-ma.svg" alt="Brasão MA">
+    <img src="assets/brasao-ma.png" alt="Brasão MA">
     <div>
       <div class="brand-title">AGE <span>Informa</span></div>
       <div class="brand-sub">Auditoria Geral do Estado do Maranhão</div>
