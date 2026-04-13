@@ -137,8 +137,8 @@ def atualizar_portal(edicoes: list):
 <section class="apresentacao">
   <div class="apresentacao-inner">
     <div class="apres-texto">
-      <h2>O informativo semanal da <span>auditoria interna</span> do Maranhão</h2>
-      <p>O AGE Informa é produzido pela Gerência de Monitoramento e Qualidade (GAUD-IV/GMQ) e reúne, toda semana, as publicações mais relevantes para a equipe de auditoria interna do Estado do Maranhão — normas, jurisprudência, boas práticas e oportunidades de capacitação.</p>
+      <h2>O informativo semanal da <span>Auditoria Geral do Estado do Maranhão</span></h2>
+      <p>O AGE Informa é uma iniciativa da Auditoria Geral do Estado do Maranhão com o objetivo de consolidar, de forma regular, simples e objetiva, as publicações mais relevantes para a equipe de auditores internos. Em um único instrumento semanal, são reunidas notícias, normas, jurisprudência, boas práticas e oportunidades de capacitação provenientes das principais fontes de informação sobre controle interno governamental — entre elas a CGU, o TCU, o TCE-MA, o CONACI, a ATRICON, o IIA Brasil e a ENAP —, mantendo a equipe permanentemente atualizada sobre os temas que orientam e fortalecem a atividade de auditoria interna no setor público.</p>
     </div>
     <div class="apres-indicadores">
       <div class="indicador">
@@ -181,7 +181,8 @@ def atualizar_portal(edicoes: list):
 <div class="content">
   <div class="section-header">
     <div class="section-title">Todas as edições</div>
-    <div class="section-sub">Informativo semanal da GAUD-IV / GMQ · Auditoria-Geral do Estado do Maranhão</div>
+    <div class="section-sub">Informativo semanal da Auditoria Geral do Estado do Maranhão — AGE</div>
+    <p style="font-size:13px;color:#5A5A58;margin-top:10px;line-height:1.7;">Nesta seção você encontra todas as edições do AGE Informa, organizadas da mais recente para a mais antiga. Acesse qualquer edição para consultar na íntegra as notícias, normas, boas práticas e oportunidades de capacitação reunidas naquela semana.</p>
   </div>
   {grid_ou_vazio}
 </div>
@@ -189,10 +190,11 @@ def atualizar_portal(edicoes: list):
   <div class="footer-inner">
     <div>
       <div class="footer-brand">AGE <span>Informa</span></div>
-      <div class="footer-desc">Informativo semanal da Auditoria-Geral do Estado do Maranhão.<br>Produzido pela GAUD-IV / Gerência de Monitoramento e Qualidade.<br>Auditora-Geral: Luana de Jesus Pereira · STC/MA</div>
+      <div class="footer-desc">Informativo semanal da Auditoria Geral do Estado do Maranhão.<br>Produzido pela GAUD-IV / Gerência de Monitoramento e Qualidade · STC/MA</div>
     </div>
     <div class="footer-links">
       <h5>Links institucionais</h5>
+      <a href="https://www.ma.gov.br" target="_blank">Governo do Estado do Maranhão</a>
       <a href="https://www.stc.ma.gov.br" target="_blank">STC/MA — Secretaria de Transparência e Controle</a>
       <a href="https://www.tcema.tc.br" target="_blank">TCE-MA — Tribunal de Contas do Estado</a>
       <a href="https://www.gov.br/cgu" target="_blank">CGU — Controladoria-Geral da União</a>
