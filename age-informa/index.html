@@ -7,82 +7,37 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --azul:     #002D72;
-    --vermelho: #C0111E;
-    --dourado:  #C8A84B;
-    --texto:    #2C2C2A;
-    --borda:    #D8D5CC;
-    --bg:       #ECEAE4;
+    --azul: #002D72; --vermelho: #C0111E;
+    --dourado: #C8A84B; --texto: #2C2C2A;
+    --cinza-bg: #F5F4F0;
   }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Source Sans 3', sans-serif; background: var(--bg); color: var(--texto); }
-
-  /* Header */
-  .header { background: var(--azul); }
-  .header-stripe {
-    height: 6px;
-    background: linear-gradient(to right, #1A1A1A 33.3%, #fff 33.3% 66.6%, var(--vermelho) 66.6%);
-  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Source Sans 3', sans-serif; background: #ECEAE4; color: var(--texto); }
+  .header { background: var(--azul); padding: 0; }
+  .header-stripe { height: 6px; background: linear-gradient(to right, #1A1A1A 33.3%, #fff 33.3% 66.6%, var(--vermelho) 66.6%); }
   .header-inner { padding: 24px 40px; display: flex; align-items: center; gap: 18px; }
   .header-inner img { width: 52px; height: auto; filter: drop-shadow(0 1px 3px rgba(0,0,0,0.4)); }
   .brand-title { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 900; color: #fff; }
   .brand-title span { color: var(--dourado); }
-  .brand-sub { font-size: 10px; color: rgba(255,255,255,0.55); letter-spacing: 2.5px; text-transform: uppercase; margin-top: 3px; }
+  .brand-sub { font-size: 11px; color: rgba(255,255,255,0.6); letter-spacing: 2px; text-transform: uppercase; margin-top: 3px; }
   .header-bottom { height: 3px; background: var(--dourado); opacity: 0.5; }
-
-  /* Nav */
-  .nav { background: #fff; border-bottom: 1px solid var(--borda); padding: 0 40px; }
-  .nav a { display: inline-block; padding: 14px 0; margin-right: 28px; font-size: 13px; font-weight: 600; color: var(--texto); border-bottom: 2px solid transparent; text-decoration: none; }
-  .nav a.active { color: var(--azul); border-bottom-color: var(--azul); }
-  .nav a:hover { color: var(--azul); }
-
-  /* Content */
-  .content { max-width: 960px; margin: 40px auto; padding: 0 24px; }
-  .page-header { margin-bottom: 32px; }
-  .page-header h1 { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--azul); margin-bottom: 6px; }
-  .page-header p { font-size: 14px; color: #777; }
-
-  /* Grid de edições */
+  .content { max-width: 900px; margin: 40px auto; padding: 0 24px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--azul); margin-bottom: 24px; padding-bottom: 10px; border-bottom: 2px solid var(--dourado); }
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
-  .edicao-card {
-    background: #fff;
-    border-radius: 8px;
-    padding: 24px;
-    text-decoration: none;
-    color: var(--texto);
-    border-top: 4px solid var(--azul);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    transition: transform 0.15s, box-shadow 0.15s;
-    display: block;
-  }
+  .edicao-card { background: #fff; border-radius: 8px; padding: 24px; text-decoration: none; color: var(--texto); border-top: 4px solid var(--azul); box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: transform 0.15s, box-shadow 0.15s; display: block; }
   .edicao-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
-  .edicao-numero { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--dourado); margin-bottom: 8px; }
+  .edicao-numero { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--dourado); margin-bottom: 8px; }
   .edicao-nome { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--azul); margin-bottom: 12px; }
   .edicao-link { font-size: 13px; color: var(--vermelho); font-weight: 600; }
-
-  /* Estado vazio */
-  .empty-state {
-    text-align: center;
-    padding: 80px 24px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  }
-  .empty-state svg { width: 48px; height: 48px; stroke: #ccc; fill: none; stroke-width: 1.5; margin-bottom: 16px; }
-  .empty-state h3 { font-family: 'Playfair Display', serif; font-size: 18px; color: #aaa; margin-bottom: 8px; }
-  .empty-state p { font-size: 13px; color: #bbb; }
-
-  /* Footer */
-  .footer { text-align: center; padding: 48px 24px 32px; font-size: 12px; color: #aaa; margin-top: 40px; }
-  .footer a { color: var(--azul); }
+  .empty { text-align: center; color: #888; padding: 60px 0; font-size: 15px; }
+  .footer { text-align: center; padding: 40px; font-size: 12px; color: #999; margin-top: 60px; }
 </style>
 </head>
 <body>
-
 <header class="header">
   <div class="header-stripe"></div>
   <div class="header-inner">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Bras%C3%A3o_do_Maranh%C3%A3o.svg/120px-Bras%C3%A3o_do_Maranh%C3%A3o.svg.png" alt="Brasão do Maranhão">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Bras%C3%A3o_do_Maranh%C3%A3o.svg/120px-Bras%C3%A3o_do_Maranh%C3%A3o.svg.png" alt="Brasão MA">
     <div>
       <div class="brand-title">AGE <span>Informa</span></div>
       <div class="brand-sub">Auditoria Geral do Estado do Maranhão</div>
@@ -90,29 +45,15 @@
   </div>
   <div class="header-bottom"></div>
 </header>
-
-<nav class="nav">
-  <a href="../index.html">Início</a>
-  <a href="index.html" class="active">Boletins</a>
-</nav>
-
 <div class="content">
-  <div class="page-header">
-    <h1>Todas as edições</h1>
-    <p>Informativo semanal da GAUD-IV / GMQ · Auditoria-Geral do Estado do Maranhão</p>
-  </div>
-
-  <div class="empty-state">
-    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-    <h3>Nenhuma edição publicada ainda</h3>
-    <p>Execute <code>python agent/publicar.py</code> após gerar o primeiro boletim.</p>
-  </div>
+  <h2 class="section-title">Todas as edições</h2>
+  <div class="grid">
+        <a href="edicoes/age-informa-01-2026.html" class="edicao-card">
+          <div class="edicao-numero">Nº 01/2026</div>
+          <div class="edicao-nome">AGE Informa</div>
+          <div class="edicao-link">Acessar edição →</div>
+        </a></div>
 </div>
-
-<footer class="footer">
-  AGE Informa · GAUD-IV / GMQ · Auditoria-Geral do Estado do Maranhão ·
-  <a href="https://feviom.github.io/Claude_Projeto_01/">feviom.github.io/Claude_Projeto_01</a>
-</footer>
-
+<footer class="footer">AGE Informa · GAUD-IV / GMQ · Auditoria Geral do Estado do Maranhão</footer>
 </body>
 </html>

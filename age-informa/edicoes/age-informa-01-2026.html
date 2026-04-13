@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AGE Informa Nº 01/2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ── Reset & Base ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --azul:      #002D72;
+    --azul-med:  #1A4A8A;
+    --vermelho:  #C0111E;
+    --dourado:   #C8A84B;
+    --verde:     #1A6B3C;
+    --texto:     #2C2C2A;
+    --texto-sec: #5A5A58;
+    --borda:     #D8D5CC;
+    --bg:        #ECEAE4;
+    --bg-card:   #F5F4F0;
+    --branco:    #FFFFFF;
+  }
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--bg);
+    color: var(--texto);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* ── Layout ── */
+  .wrapper { max-width: 780px; margin: 0 auto; background: var(--branco); }
+
+  /* ── Header ── */
+  .header { background: var(--azul); }
+  .header-stripe {
+    height: 6px;
+    background: linear-gradient(to right,
+      #1A1A1A 33.3%,
+      #fff    33.3% 66.6%,
+      var(--vermelho) 66.6%);
+  }
+  .header-inner {
+    padding: 28px 40px 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .header-inner img {
+    width: 56px;
+    height: auto;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+    flex-shrink: 0;
+  }
+  .brand { flex: 1; }
+  .brand-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -0.5px;
+  }
+  .brand-title span { color: var(--dourado); }
+  .brand-sub {
+    font-size: 10px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-top: 3px;
+  }
+  .header-meta {
+    text-align: right;
+    color: rgba(255,255,255,0.7);
+    font-size: 12px;
+    line-height: 1.8;
+  }
+  .header-meta strong { color: var(--dourado); font-size: 14px; display: block; }
+  .header-bottom { height: 4px; background: var(--dourado); opacity: 0.45; }
+
+  /* ── Destaque ── */
+  .destaque {
+    background: linear-gradient(135deg, var(--azul) 0%, var(--azul-med) 100%);
+    padding: 36px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .destaque::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .destaque-tag {
+    display: inline-block;
+    background: var(--dourado);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 2px;
+    margin-bottom: 16px;
+  }
+  .destaque-titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: 14px;
+  }
+  .destaque-texto {
+    font-size: 14px;
+    color: rgba(255,255,255,0.82);
+    line-height: 1.7;
+    max-width: 640px;
+  }
+  .destaque-rodape {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 16px;
+  }
+  .destaque-label { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 1.5px; text-transform: uppercase; }
+  .destaque-badge {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 14px;
+    border-radius: 20px;
+  }
+
+  /* ── Conteúdo principal ── */
+  .content { padding: 0 40px 40px; background: var(--branco); }
+
+  /* ── Section ── */
+  .section { padding: 32px 0; border-bottom: 1px solid var(--borda); }
+  .section:last-child { border-bottom: none; }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .section-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .section-icon svg {
+    width: 18px; height: 18px;
+    stroke: #fff; fill: none;
+    stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+  }
+  .section-icon.azul    { background: var(--azul); }
+  .section-icon.vermelho{ background: var(--vermelho); }
+  .section-icon.dourado { background: var(--dourado); }
+  .section-icon.verde   { background: var(--verde); }
+  .section-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--texto);
+    letter-spacing: -0.2px;
+  }
+
+  /* ── News item ── */
+  .news-item {
+    display: flex;
+    gap: 0;
+    margin-bottom: 16px;
+    background: var(--bg-card);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .news-item:last-child { margin-bottom: 0; }
+  .news-accent {
+    width: 4px;
+    flex-shrink: 0;
+  }
+  .azul-ac    { background: var(--azul); }
+  .vermelho-ac{ background: var(--vermelho); }
+  .dourado-ac { background: var(--dourado); }
+  .verde-ac   { background: var(--verde); }
+  .news-content { padding: 14px 16px; flex: 1; }
+  .news-fonte {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--dourado);
+    margin-bottom: 5px;
+  }
+  .news-titulo {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--texto);
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+  .news-resumo {
+    font-size: 13px;
+    color: var(--texto-sec);
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+  .news-link {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--vermelho);
+    letter-spacing: 0.3px;
+  }
+  .news-link:hover { text-decoration: underline; }
+
+  /* ── Grid 2 colunas (Tribunais) ── */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  @media (max-width: 560px) { .grid-2 { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--bg-card);
+    border-radius: 6px;
+    padding: 18px;
+    border-top: 3px solid var(--azul);
+  }
+  .card.vermelho-top { border-top-color: var(--vermelho); }
+  .card-fonte {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--dourado);
+    margin-bottom: 8px;
+  }
+  .card-titulo {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--texto);
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .card-texto {
+    font-size: 13px;
+    color: var(--texto-sec);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+
+  /* ── Capacitação ── */
+  .capacitacao-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  @media (max-width: 560px) { .capacitacao-grid { grid-template-columns: 1fr; } }
+  .curso-item {
+    background: var(--bg-card);
+    border-radius: 6px;
+    border-left: 3px solid var(--verde);
+    padding: 14px 16px;
+  }
+  .curso-fonte {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--verde);
+    margin-bottom: 5px;
+  }
+  .curso-nome {
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--texto);
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+  .curso-meta {
+    font-size: 12px;
+    color: var(--texto-sec);
+  }
+
+  /* ── Footer ── */
+  .footer { background: var(--azul); }
+  .footer-inner {
+    padding: 24px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .footer-brand span { color: var(--dourado); }
+  .footer-info {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    text-align: right;
+    line-height: 1.8;
+  }
+  .footer-stripe {
+    height: 4px;
+    background: linear-gradient(to right, var(--dourado), var(--vermelho));
+    opacity: 0.6;
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- CABEÇALHO -->
+  <header class="header">
+    <div class="header-stripe"></div>
+    <div class="header-inner">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Bras%C3%A3o_do_Maranh%C3%A3o.svg/120px-Bras%C3%A3o_do_Maranh%C3%A3o.svg.png" alt="Brasão do Maranhão">
+      <div class="brand">
+        <div class="brand-title">AGE <span>Informa</span></div>
+        <div class="brand-sub">Auditoria Geral do Estado do Maranhão</div>
+      </div>
+      <div class="header-meta">
+        <strong>Nº 01/2026</strong>
+        Semana de 14 a 18 de abril de 2026<br>
+        GAUD-IV / GMQ
+      </div>
+    </div>
+    <div class="header-bottom"></div>
+  </header>
+
+  <!-- DESTAQUE DA SEMANA -->
+  <div class="destaque">
+    <div class="destaque-tag">Controle Interno / Governança</div>
+    <div class="destaque-titulo">CONACI inicia gestão 2026–2027 com foco em controle interno estratégico e fortalecimento do IA-CM</div>
+    <div class="destaque-texto">O Conselho Nacional de Controle Interno (CONACI) deu início a um novo ciclo bienal com uma agenda voltada ao fortalecimento institucional das unidades de controle interno em todo o país. Entre as prioridades declaradas para 2026–2027 estão a consolidação do controle interno como função estratégica, preventiva e orientada a resultados, o aprimoramento da governança e da integridade, e a ampliação do diálogo com a sociedade. A agenda tem impacto direto sobre os membros do Conselho — entre os quais se incluem as controladorias e auditorias internas estaduais —, reforçando a trajetória de evolução do Modelo IA-CM no setor público brasileiro. Para a AGE/MA, o ciclo representa uma oportunidade de alinhamento às melhores práticas nacionais, especialmente no avanço rumo ao Nível 3 do IA-CM e na consolidação dos KPAs ainda em implantação. O calendário de Reuniões Técnicas do CONACI para 2026 já foi definido, com quatro encontros nacionais previstos, incluindo o ENCI em Belo Horizonte/MG em setembro.</div>
+    <div class="destaque-rodape">
+      <div class="destaque-label">Destaque da semana</div>
+      <div class="destaque-badge">AGE Informa Nº 01/2026</div>
+    </div>
+  </div>
+
+  <!-- CONTEÚDO -->
+  <div class="content">
+
+    <!-- NORMAS E LEGISLAÇÃO -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-icon azul">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <div class="section-name">Normas e Legislação</div>
+      </div>
+      
+        <div class="news-item">
+          <div class="news-accent azul-ac"></div>
+          <div class="news-content">
+            <div class="news-fonte">TCE-MA</div>
+            <div class="news-titulo">Decisão Normativa TCE/MA nº 49/2026 — Modulação de efeitos da IN nº 83 para prestações de contas de 2025</div>
+            <div class="news-resumo">O TCE-MA publicou a Decisão Normativa nº 49/2026, que modula os efeitos operacionais da Instrução Normativa TCE/MA nº 83 quanto às prestações de contas anuais do exercício de 2025. A norma mantém a plena vigência da IN nº 83 e concede prazo adicional de 60 dias corridos para o envio de informações complementares pelos fiscalizados que já protocolaram dentro do prazo regulamentar (até 4 de abril). As unidades auditadas estaduais vinculadas à AGE/MA devem verificar se se enquadram no prazo adicional e adequar o envio das informações ao sistema ePCA.</div>
+            <a href="https://www.tcema.tc.br/index.php/noticias" class="news-link" target="_blank">Acessar →</a>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-accent azul-ac"></div>
+          <div class="news-content">
+            <div class="news-fonte">TCU</div>
+            <div class="news-titulo">Acórdão 442/2026-Plenário — Proteção às ME/EPP nas contratações públicas: parâmetro é o item, não o global</div>
+            <div class="news-resumo">O Plenário do TCU firmou entendimento, publicado no Boletim de Jurisprudência nº 575, de que o critério para aplicação do tratamento favorecido às microempresas e empresas de pequeno porte (LC 123/06 e Lei 14.133/21) deve ser o valor estimado de cada item autônomo da licitação, e não o valor global do certame. A decisão é relevante para as UAs do Estado do Maranhão que realizam compras públicas com itens independentes: afastar o benefício com base apenas no total do pregão configura interpretação indevida. As equipes de auditoria devem incluir esse parâmetro nas verificações de conformidade de licitações.</div>
+            <a href="https://www.migalhas.com.br/depeso/452854/tcu-reforca-protecao-aos-pequenos-negocios-nas-licitacoes-publicas" class="news-link" target="_blank">Acessar →</a>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-accent azul-ac"></div>
+          <div class="news-content">
+            <div class="news-fonte">CGU</div>
+            <div class="news-titulo">Portaria Normativa CGU nº 244/2026 — Critérios para estágio probatório de auditores [A VERIFICAR]</div>
+            <div class="news-resumo">A CGU publicou, em janeiro de 2026, norma que estabelece critérios e procedimentos aplicáveis ao estágio probatório dos servidores aprovados no próximo concurso público da CGU. Embora de aplicação direta ao quadro federal, a portaria serve de referência para regulamentações semelhantes em âmbito estadual, especialmente no contexto de futuras contratações de auditores pela AGE/MA ou unidades vinculadas. Recomenda-se verificar o teor integral no Diário Oficial da União de 21/01/2026. [A VERIFICAR — confirmar vigência e escopo exato no DOU]</div>
+            <a href="https://www.gov.br/cgu/pt-br" class="news-link" target="_blank">Acessar →</a>
+          </div>
+        </div>
+    </section>
+
+    <!-- TRIBUNAIS DE CONTAS -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-icon vermelho">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="section-name">Tribunais de Contas</div>
+      </div>
+      <div class="grid-2">
+        <div class="card ">
+          <div class="card-fonte">TCE-MA</div>
+          <div class="card-titulo">DN nº 49/2026 amplia prazo para prestações de contas anuais relativas a 2025</div>
+          <div class="card-texto">A Decisão Normativa TCE/MA nº 49/2026 regula a transição para o novo modelo de prestação de contas previsto na IN nº 83/2026. Fiscalizados que entregaram o núcleo essencial até 4 de abril têm prazo adicional de 60 dias para complementar as informações exigidas. A norma garante segurança jurídica no primeiro ciclo de vigência plena da IN nº 83, que modernizou os requisitos de prestação de contas do Estado. As GAUDs devem orientar as UAs sob sua responsabilidade sobre o prazo e os documentos ainda pendentes.</div>
+          <a href="https://www.tcema.tc.br/index.php/noticias" class="news-link" target="_blank">Ler →</a>
+        </div>
+        <div class="card vermelho-top">
+          <div class="card-fonte">TCU</div>
+          <div class="card-titulo">Boletim de Jurisprudência nº 575 — Novo parâmetro para ME/EPP em licitações por itens</div>
+          <div class="card-texto">O TCU consolidou no BJ nº 575 o entendimento do Acórdão 442/2026-Plenário: nas licitações estruturadas em itens autônomos com objetos e valores distintos, o limite de enquadramento das ME/EPP deve ser aferido item a item. A Corte de Contas reafirma que políticas de estímulo a pequenos negócios têm caráter vinculante e não podem ser esvaziadas por tecnicismos formais. Auditores que atuam em fiscalização de contratos devem atualizar os procedimentos de análise de editais.</div>
+          <a href="https://portal.tcu.gov.br/jurisprudencia" class="news-link" target="_blank">Ler →</a>
+        </div></div>
+    </section>
+
+    <!-- BOAS PRÁTICAS E INOVAÇÃO -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-icon dourado">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="section-name">Boas Práticas e Inovação</div>
+      </div>
+      
+        <div class="news-item">
+          <div class="news-accent dourado-ac"></div>
+          <div class="news-content">
+            <div class="news-fonte">IIA Brasil</div>
+            <div class="news-titulo">Inteligência artificial autônoma redefine práticas e habilidades na auditoria interna</div>
+            <div class="news-resumo">O IIA Brasil publicou artigo destacando como a IA autônoma está transformando o papel do auditor interno: desde a automação de testes de controles até a análise preditiva de riscos. O texto aponta que a adaptação profissional passa pelo desenvolvimento de competências em interpretação de dados, ceticismo profissional e governança de algoritmos. Para a AGE/MA, o tema é estratégico: a incorporação gradual de ferramentas de IA nos processos de auditoria pode ampliar a cobertura das UAs e fortalecer os KPAs de tecnologia do IA-CM.</div>
+            <a href="https://www.iiabrasil.org.br/" class="news-link" target="_blank">Acessar →</a>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-accent azul-ac"></div>
+          <div class="news-content">
+            <div class="news-fonte">TCE-MA</div>
+            <div class="news-titulo">Programa de Celeridade Processual do TCE-MA alcança Índice Geral de Eficiência de 99,62% no primeiro ano</div>
+            <div class="news-resumo">O TCE-MA divulgou os resultados do primeiro ano de seu Programa de Celeridade Processual, Reconhecimento de Desempenho e Produtividade: Índice Geral de Eficiência de 99,62%, revelando alto grau de aderência às metas fixadas. O programa também estabelece metas para 2026, incluindo a contratação da banca organizadora do novo concurso público. A experiência do TCE-MA em gestão de metas de desempenho institucional é referência aplicável às práticas de planejamento e monitoramento da AGE/MA, em especial no âmbito do PAINT e do SMR.</div>
+            <a href="https://www.tcema.tc.br/index.php/noticias" class="news-link" target="_blank">Acessar →</a>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-accent verde-ac"></div>
+          <div class="news-content">
+            <div class="news-fonte">CONACI</div>
+            <div class="news-titulo">CONACI define calendário completo de Reuniões Técnicas para 2026 e consolida entregas do IA-CM</div>
+            <div class="news-resumo">Na 56ª Reunião Técnica do CONACI foram eleitas as sedes dos quatro eventos nacionais de 2026: 57ª RTC em Natal/RN (março), 58ª RTC em Porto Alegre/RS (junho), ENCI + 59ª RTC em Belo Horizonte/MG (setembro) e 60ª RTC em Brasília/DF (novembro). As câmaras técnicas de Auditoria Interna/IA-CM, Lei Anticorrupção e Inteligência Artificial apresentaram as entregas de 2024/2025. A participação da AGE/MA nos eventos é recomendada para alinhamento das práticas locais ao padrão nacional e para obtenção de créditos de capacitação na área de controle interno.</div>
+            <a href="https://conaci.org.br/noticias/conaci-elege-sedes-para-os-eventos-de-2026-do-orgao/" class="news-link" target="_blank">Acessar →</a>
+          </div>
+        </div>
+    </section>
+
+    <!-- CAPACITAÇÃO EM DESTAQUE -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-icon verde">
+          <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <div class="section-name">Capacitação em Destaque</div>
+      </div>
+      <div class="capacitacao-grid">
+        <div class="curso-item">
+          <div class="curso-info">
+            <div class="curso-fonte">ENAP</div>
+            <div class="curso-nome">Liderança no Setor Público — Aprimore competências para liderar</div>
+            <div class="curso-meta">20h · Abril 2026 (presencial) — inscrições abertas</div>
+          </div>
+        </div>
+        <div class="curso-item">
+          <div class="curso-info">
+            <div class="curso-fonte">ENAP</div>
+            <div class="curso-nome">Inteligência Artificial e o papel do Estado — como a IA redefine o setor público</div>
+            <div class="curso-meta">2h · 15/05/2026 (remoto) — inscrições abertas</div>
+          </div>
+        </div>
+        <div class="curso-item">
+          <div class="curso-info">
+            <div class="curso-fonte">ENAP (Escola Virtual Gov)</div>
+            <div class="curso-nome">Gestão de Recursos Públicos com Transferegov.br e Painéis Gerenciais</div>
+            <div class="curso-meta">A confirmar · Oferta contínua — inscrições abertas na EVG</div>
+          </div>
+        </div>
+        <div class="curso-item">
+          <div class="curso-info">
+            <div class="curso-fonte">ENAP (Escola Virtual Gov)</div>
+            <div class="curso-nome">Microsoft 365 aplicado à gestão de dados públicos (Forms, Power Automate, Excel e Power BI)</div>
+            <div class="curso-meta">A confirmar · Oferta contínua — inscrições abertas na EVG</div>
+          </div>
+        </div></div>
+    </section>
+
+    <!-- SEÇÕES CONDICIONAIS -->
+    
+        <section class="section">
+          <div class="section-header">
+            <div class="section-icon azul"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+            <div class="section-name">Controle Interno em Foco</div>
+          </div>
+          
+            <div class="news-item">
+              <div class="news-accent azul-ac"></div>
+              <div class="news-content">
+                <div class="news-fonte">CONACI</div>
+                <div class="news-titulo">Entendimentos sobre os KPAs do Nível 3 do Modelo IA-CM — documento de referência para unidades de auditoria interna</div>
+                <div class="news-resumo">O CONACI publicou documento consolidando os entendimentos da Câmara Técnica de Auditoria e IA-CM sobre todos os Macroprocessos-chave (KPAs) do Nível 3 do Modelo de Capacidade de Auditoria Interna. O material abrange temas como auditoria de desempenho, serviços de consultoria, qualificação de profissionais, planejamento baseado em riscos e gestão da qualidade. Trata-se de referência essencial para a AGE/MA na etapa de evolução rumo ao Nível 3, fornecendo interpretações práticas e exemplos de evidências aceitáveis para cada KPA.</div>
+                <a href="https://conaci.org.br/noticias/conaci-publica-entendimentos-sobre-o-nivel-3-do-modelo-ia-cm/" class="news-link" target="_blank">Acessar →</a>
+              </div>
+            </div>
+            <div class="news-item">
+              <div class="news-accent azul-ac"></div>
+              <div class="news-content">
+                <div class="news-fonte">CONACI</div>
+                <div class="news-titulo">Nova gestão CONACI 2026–2027: controle interno preventivo e orientado a resultados como prioridade estratégica</div>
+                <div class="news-resumo">A gestão CONACI 2026–2027 reafirma o controle interno como função estratégica da administração pública, com ênfase em governança, integridade e eficiência dos controles. A agenda prevê continuidade do ciclo IA-CM, fortalecimento da Câmara Técnica de Auditoria Interna e ampliação da rede de boas práticas entre estados e municípios. Para a AGE/MA, o alinhamento às diretrizes do CONACI é condição de elegibilidade para a certificação no IA-CM e para o acesso às publicações técnicas da rede nacional.</div>
+                <a href="https://conaci.org.br/noticias/nova-gestao-do-conaci-projeta-avancos-no-controle-interno-e-fortalecimento-da-confianca-publica-para-o-bienio-2026-2027/" class="news-link" target="_blank">Acessar →</a>
+              </div>
+            </div>
+        </section>
+    
+        <section class="section">
+          <div class="section-header">
+            <div class="section-icon azul"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+            <div class="section-name">Internacional</div>
+          </div>
+          
+            <div class="news-item">
+              <div class="news-accent azul-ac"></div>
+              <div class="news-content">
+                <div class="news-fonte">IIA Brasil</div>
+                <div class="news-titulo">AI Magazine — Edição 57 (Jan/Fev 2026): tecnologia, risco e transformação da auditoria interna</div>
+                <div class="news-resumo">A edição 57 da AI Magazine do IIA Brasil traz análises sobre como a tecnologia, a integração de sistemas e a cultura de risco estão impulsionando a transformação da auditoria interna em grandes organizações. A publicação discute também como a IA autônoma redefine práticas e habilidades profissionais, e aborda a importância do alinhamento ao The IIA para a legitimidade institucional das funções de auditoria. A leitura é recomendada às equipes da AGE/MA como atualização em tendências globais com aplicação direta ao contexto do setor público brasileiro.</div>
+                <a href="https://www.iiabrasil.org.br/" class="news-link" target="_blank">Acessar →</a>
+              </div>
+            </div>
+        </section>
+
+  </div><!-- /content -->
+
+  <!-- RODAPÉ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">AGE <span>Informa</span></div>
+      <div class="footer-info">
+        GAUD-IV / Gerência de Monitoramento e Qualidade<br>
+        Auditoria-Geral do Estado do Maranhão · STC/MA
+      </div>
+    </div>
+    <div class="footer-stripe"></div>
+  </footer>
+
+</div><!-- /wrapper -->
+</body>
+</html>
