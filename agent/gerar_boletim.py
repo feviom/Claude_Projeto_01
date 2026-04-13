@@ -96,7 +96,7 @@ As seções "controle_interno" e "internacional" podem ser arrays vazios [] se n
 
     response = client.messages.create(
         model="claude-sonnet-4-6",
-        max_tokens=8000,
+        max_tokens=16000,
         system=skill,
         messages=[{"role": "user", "content": prompt}],
         tools=[{"type": "web_search_20250305", "name": "web_search"}]
@@ -108,14 +108,24 @@ As seções "controle_interno" e "internacional" podem ser arrays vazios [] se n
         if bloco.type == "text":
             texto_resposta += bloco.text
 
-    # Parse do JSON
+    # Parse do JSON — extrai o último bloco JSON completo da resposta
     try:
-        # Remove possíveis marcadores de código markdown
-        texto_limpo = re.sub(r"```json|```", "", texto_resposta).strip()
+        # Tenta encontrar bloco ```json ... ```
+        matches = re.findall(r"```json\s*([\s\S]*?)```", texto_resposta)
+        if matches:
+            texto_limpo = matches[-1].strip()
+        else:
+            # Tenta extrair JSON puro: do último '{' ao último '}'
+            inicio = texto_resposta.rfind("{")
+            fim = texto_resposta.rfind("}") + 1
+            if inicio == -1 or fim == 0:
+                raise ValueError("Nenhum JSON encontrado na resposta.")
+            texto_limpo = texto_resposta[inicio:fim]
+
         conteudo = json.loads(texto_limpo)
-    except json.JSONDecodeError as e:
+    except (json.JSONDecodeError, ValueError) as e:
         print(f"❌ Erro ao interpretar resposta do agente: {e}")
-        print(f"Resposta recebida:\n{texto_resposta[:500]}")
+        print(f"Resposta recebida:\n{texto_resposta[:800]}")
         raise
 
     return conteudo
