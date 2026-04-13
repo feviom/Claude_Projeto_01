@@ -1,0 +1,4 @@
+.env
+age-informa/edicoes/*-whatsapp.txt
+__pycache__/
+*.pyc

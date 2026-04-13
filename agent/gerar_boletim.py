@@ -17,6 +17,14 @@ from datetime import datetime
 if sys.stdout.encoding != "utf-8":
     sys.stdout.reconfigure(encoding="utf-8")
 
+# Carrega .env se existir (evita expor a chave no terminal)
+_env_file = Path(__file__).parent.parent / ".env"
+if _env_file.exists():
+    for _line in _env_file.read_text(encoding="utf-8").splitlines():
+        if "=" in _line and not _line.startswith("#"):
+            _k, _v = _line.split("=", 1)
+            os.environ.setdefault(_k.strip(), _v.strip())
+
 # ── Configuração ──────────────────────────────────────────────────────────────
 
 BASE_DIR = Path(__file__).parent.parent
