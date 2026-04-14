@@ -17,9 +17,12 @@ from datetime import datetime
 if sys.stdout.encoding != "utf-8":
     sys.stdout.reconfigure(encoding="utf-8")
 
-# Carrega .env se existir (evita expor a chave no terminal)
-_env_file = Path(__file__).parent.parent / ".env"
-if _env_file.exists():
+# Carrega arquivo de variáveis de ambiente se existir
+_env_file = next(
+    (f for f in Path(__file__).parent.parent.glob("*.env") if f.is_file()),
+    None
+)
+if _env_file and _env_file.exists():
     for _line in _env_file.read_text(encoding="utf-8").splitlines():
         if "=" in _line and not _line.startswith("#"):
             _k, _v = _line.split("=", 1)
@@ -61,12 +64,34 @@ def gerar_boletim(semana: str, edicao: int, ano: int) -> dict:
 
 Período de referência: semana de {semana}.
 
-Siga rigorosamente o processo definido na skill:
-1. Use a ferramenta de busca web para varrer cada uma das 15 fontes
+FONTES PRIORITÁRIAS — pesquise APENAS estas 6 fontes (uma busca por fonte):
+1. TCE-MA (tcema.tc.br) — acórdãos e notícias da semana
+2. CGU (gov.br/cgu) — normas e publicações da semana
+3. TCU (portal.tcu.gov.br) — acórdãos e jurisprudência da semana
+4. CONACI (conaci.org.br) — resoluções e entendimentos da semana
+5. ENAP (enap.gov.br) — cursos e eventos abertos
+6. IIA Brasil (iiabrasil.org.br) — artigos e normas da semana
+
+REGRA CRÍTICA DE LINKS:
+Para cada notícia, acórdão, publicação ou curso coletado, forneça a URL direta e específica
+do item — não a URL da home ou da categoria do site.
+Exemplos corretos:
+  ✅ https://tcema.tc.br/noticias/deliberacao-123-2026
+  ✅ https://portal.tcu.gov.br/imprensa/noticias/tcu-aprova-resolucao-xyz.htm
+  ✅ https://www.enap.gov.br/index.php?option=com_courses&curso=123
+Exemplos ERRADOS (nunca usar):
+  ❌ https://tcema.tc.br
+  ❌ https://portal.tcu.gov.br
+  ❌ https://www.enap.gov.br
+Se não for possível identificar a URL específica do item, use "[URL NÃO ENCONTRADA]"
+e adicione "[A VERIFICAR]" ao título. NUNCA use URLs genéricas de domínio.
+
+Processo:
+1. Faça UMA busca por fonte (6 buscas no total)
 2. Aplique os critérios de relevância A–E
-3. Selecione o Destaque da Semana e distribua os demais itens
-4. Redija todo o conteúdo seguindo as regras editoriais
-5. Retorne APENAS um JSON com a seguinte estrutura, sem nenhum texto fora do JSON:
+3. Selecione o Destaque da Semana e distribua os itens pelas seções
+4. Redija seguindo as regras editoriais da skill
+5. Retorne APENAS um JSON com a estrutura abaixo, sem nenhum texto fora do JSON:
 
 {{
   "destaque": {{
@@ -138,12 +163,38 @@ As seções "controle_interno" e "internacional" podem ser arrays vazios [] se n
 
     return conteudo
 
+# ── Validação de URLs ─────────────────────────────────────────────────────────
+
+def validar_url(url: str, titulo: str) -> tuple:
+    """Retorna (url, is_valida). Inválida se não tem path significativo."""
+    from urllib.parse import urlparse
+    if not url or url == "[URL NÃO ENCONTRADA]":
+        return url, False
+    parsed = urlparse(url)
+    path = parsed.path.strip("/")
+    if not path or len(path) < 5:
+        return url, False
+    return url, True
+
+def flag_url(item: dict, campo_titulo: str = "titulo") -> dict:
+    """Adiciona [A VERIFICAR] ao título se a URL for genérica."""
+    url, valida = validar_url(item.get("url", ""), item.get(campo_titulo, ""))
+    if not valida and not item.get(campo_titulo, "").startswith("[A VERIFICAR]"):
+        item = dict(item)
+        item[campo_titulo] = "[A VERIFICAR] " + item.get(campo_titulo, "")
+    return item
+
 # ── Montagem do HTML ──────────────────────────────────────────────────────────
 
 def montar_html(conteudo: dict, semana: str, edicao: int, ano: int) -> str:
     """Monta o HTML final do boletim a partir do conteúdo gerado."""
 
     template = carregar_template()
+
+    # Valida URLs de todos os itens
+    for secao in ("normas", "tribunais", "boas_praticas", "controle_interno", "internacional"):
+        conteudo[secao] = [flag_url(i) for i in conteudo.get(secao, [])]
+    conteudo["capacitacao"] = [flag_url(i, "nome") for i in conteudo.get("capacitacao", [])]
 
     # Seção: normas
     normas_html = ""
@@ -192,13 +243,13 @@ def montar_html(conteudo: dict, semana: str, edicao: int, ano: int) -> str:
     # Seção: capacitação
     capacitacao_html = '<div class="capacitacao-grid">'
     for item in conteudo.get("capacitacao", []):
+        link_cap = f'<a href="{item["url"]}" class="curso-link" target="_blank" rel="noopener noreferrer">Acessar →</a>' if item.get("url") and item["url"] != "[URL NÃO ENCONTRADA]" else ""
         capacitacao_html += f"""
         <div class="curso-item">
-          <div class="curso-info">
-            <div class="curso-fonte">{item['fonte']}</div>
-            <div class="curso-nome">{item['nome']}</div>
-            <div class="curso-meta">{item['carga']} · {item['data']}</div>
-          </div>
+          <div class="curso-fonte">{item['fonte']}</div>
+          <div class="curso-nome">{item['nome']}</div>
+          <div class="curso-meta">{item['carga']} · {item['data']}</div>
+          {link_cap}
         </div>"""
     capacitacao_html += "</div>"
 
@@ -258,6 +309,7 @@ def montar_html(conteudo: dict, semana: str, edicao: int, ano: int) -> str:
     html = html.replace("{{DESTAQUE_TAG}}", d["tag"])
     html = html.replace("{{DESTAQUE_TITULO}}", d["titulo"])
     html = html.replace("{{DESTAQUE_TEXTO}}", d["texto"])
+    html = html.replace("{{DESTAQUE_URL}}", d.get("url", "#"))
     html = html.replace("{{NORMAS}}", normas_html)
     html = html.replace("{{TRIBUNAIS}}", tribunais_html)
     html = html.replace("{{BOAS_PRATICAS}}", boas_praticas_html)

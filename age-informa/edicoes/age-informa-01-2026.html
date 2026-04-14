@@ -291,6 +291,15 @@
     color: var(--texto-sec);
   }
 
+  /* ── Navegação de retorno ── */
+  .nav-retorno { background: var(--bg-card); border-bottom: 1px solid var(--borda); padding: 8px 24px; }
+  .link-retorno { font-size: 13px; color: var(--azul); text-decoration: none; font-weight: 600; }
+  .link-retorno:hover { text-decoration: underline; color: var(--vermelho); }
+  .btn-integra { display: inline-block; margin-top: 14px; padding: 8px 18px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.35); color: #fff; border-radius: 4px; font-size: 13px; font-weight: 600; text-decoration: none; transition: background 0.2s; }
+  .btn-integra:hover { background: var(--dourado); border-color: var(--dourado); }
+  .link-retorno-rodape { display: block; margin-top: 8px; font-size: 12px; color: rgba(255,255,255,0.6); text-decoration: none; }
+  .link-retorno-rodape:hover { color: #fff; text-decoration: underline; }
+
   /* ── Footer ── */
   .footer { background: var(--azul); }
   .footer-inner {
@@ -323,6 +332,11 @@
 <body>
 <div class="wrapper">
 
+  <!-- NAVEGAÇÃO DE RETORNO -->
+  <nav class="nav-retorno">
+    <a href="../index.html" class="link-retorno">← Voltar ao AGE Informa</a>
+  </nav>
+
   <!-- CABEÇALHO -->
   <header class="header">
     <div class="header-stripe"></div>
@@ -346,6 +360,7 @@
     <div class="destaque-tag">Controle Interno / Governança</div>
     <div class="destaque-titulo">CONACI inicia gestão 2026–2027 com foco em controle interno estratégico e fortalecimento do IA-CM</div>
     <div class="destaque-texto">O Conselho Nacional de Controle Interno (CONACI) deu início a um novo ciclo bienal com uma agenda voltada ao fortalecimento institucional das unidades de controle interno em todo o país. Entre as prioridades declaradas para 2026–2027 estão a consolidação do controle interno como função estratégica, preventiva e orientada a resultados, o aprimoramento da governança e da integridade, e a ampliação do diálogo com a sociedade. A agenda tem impacto direto sobre os membros do Conselho — entre os quais se incluem as controladorias e auditorias internas estaduais —, reforçando a trajetória de evolução do Modelo IA-CM no setor público brasileiro. Para a AGE/MA, o ciclo representa uma oportunidade de alinhamento às melhores práticas nacionais, especialmente no avanço rumo ao Nível 3 do IA-CM e na consolidação dos KPAs ainda em implantação. O calendário de Reuniões Técnicas do CONACI para 2026 já foi definido, com quatro encontros nacionais previstos, incluindo o ENCI em Belo Horizonte/MG em setembro.</div>
+    <a href="https://www.conaci.org.br" target="_blank" rel="noopener noreferrer" class="btn-integra">Leia na íntegra →</a>
     <div class="destaque-rodape">
       <div class="destaque-label">Destaque da semana</div>
       <div class="destaque-badge">AGE Informa Nº 01/2026</div>
@@ -546,7 +561,8 @@
       <div class="footer-brand">AGE <span>Informa</span></div>
       <div class="footer-info">
         GAUD-IV / Gerência de Monitoramento e Qualidade<br>
-        Auditoria-Geral do Estado do Maranhão · STC/MA
+        Auditoria-Geral do Estado do Maranhão · STC/MA<br>
+        <a href="../index.html" class="link-retorno-rodape">← Todas as edições do AGE Informa</a>
       </div>
     </div>
     <div class="footer-stripe"></div>
